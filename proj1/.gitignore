@@ -1,0 +1,10 @@
+staff/
+__pycache__/
+*.py[cod]
+schedule_dump.*.txt
+msgq
+msgrcv
+signal
+scheduler
+*.o
+skeleton/scheduler

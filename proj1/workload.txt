@@ -1,0 +1,32 @@
+# workload.txt — example input for: ./scheduler <policy> <workload_file>
+#
+# Format (see README section 2.2):
+#   tasks <N>
+#   weights <w0> <w1> ... <w9>   # required by VTIME; optional otherwise
+#   task <index> <arrival> <npairs> <cpu1> <io1> <cpu2> <io2> ...
+# Weights are public scheduling metadata in 1..10; arrival and CPU/I/O
+# durations are in ticks. Lines starting with '#' are comments.
+# When a task exhausts its pairs it wraps around to the first pair.
+# RR and MLFQ read but ignore the weights; basic RR also ignores io values.
+#
+# This example mixes task types and weights on purpose. Run it under RR and
+# one advanced policy (MLFQ or VTIME) and compare the metrics:
+#   - tasks 0-3: interactive — short CPU bursts, frequent short I/O
+#                (under MLFQ they stay in the top queue)
+#   - tasks 8-9: batch — long CPU bursts (under MLFQ they get demoted)
+#   - tasks 4-7: late arrivals (tick 20 / 50); task 7 shows io=0
+#                (a pure-CPU cycle with no I/O after the burst)
+#   - under VTIME, larger weights accumulate vruntime more slowly
+
+tasks 10
+weights 1 2 3 4 5 6 7 8 9 10
+task 0 0  3   2 6    3 5    2 8
+task 1 0  3   3 4    2 7    4 6
+task 2 0  2   5 10   4 12
+task 3 0  2   6 9    5 11
+task 4 20 2   4 8    3 9
+task 5 20 2   35 25  30 20
+task 6 50 1   40 30
+task 7 50 1   45 0
+task 8 0  2   20 15  25 18
+task 9 0  1   50 40

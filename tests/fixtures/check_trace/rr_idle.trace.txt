@@ -1,0 +1,15 @@
+# policy=RR impl=basic quantum=2 tick_ms=1 workload=rr_idle.workload.txt tasks=10
+# P0=4100 P1=4101 P2=4102 P3=4103 P4=4104 P5=4105 P6=4106 P7=4107 P8=4108 P9=4109
+[0000] IDLE | RQ: [] | WQ: [] | ev: -
+WAIT P0 total_wait=0 total_cpu=0 total_io=0
+WAIT P1 total_wait=0 total_cpu=0 total_io=0
+WAIT P2 total_wait=0 total_cpu=0 total_io=0
+WAIT P3 total_wait=0 total_cpu=0 total_io=0
+WAIT P4 total_wait=0 total_cpu=0 total_io=0
+WAIT P5 total_wait=0 total_cpu=0 total_io=0
+WAIT P6 total_wait=0 total_cpu=0 total_io=0
+WAIT P7 total_wait=0 total_cpu=0 total_io=0
+WAIT P8 total_wait=0 total_cpu=0 total_io=0
+WAIT P9 total_wait=0 total_cpu=0 total_io=0
+METRIC avg_wait=0.00 io_resp=0.00 fairness=1.0000 util=0.0000
+TIME expected_ms=1 elapsed_ms=1

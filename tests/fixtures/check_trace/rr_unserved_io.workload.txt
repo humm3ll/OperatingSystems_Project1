@@ -1,0 +1,12 @@
+# P0 completes I/O at tick 2 but receives no later slice in this four-tick run.
+tasks 10
+task 0 0 1 1 1
+task 1 0 1 10 0
+task 2 99 1 1 0
+task 3 99 1 1 0
+task 4 99 1 1 0
+task 5 99 1 1 0
+task 6 99 1 1 0
+task 7 99 1 1 0
+task 8 99 1 1 0
+task 9 99 1 1 0

@@ -1,0 +1,19 @@
+# policy=MLFQ levels=2 quanta=1,2 boost=3 io_return=same tick_ms=1 workload=mlfq_boost_collision.workload.txt tasks=10
+# P0=4100 P1=4101 P2=4102 P3=4103 P4=4104 P5=4105 P6=4106 P7=4107 P8=4108 P9=4109
+[0000] RUN P0 q_left=0 | RQ0: [] RQ1: [] | WQ: [] | ev: PREEMPT P0
+[0001] RUN P0 q_left=1 | RQ0: [] RQ1: [] | WQ: [] | ev: -
+[0002] RUN P0 q_left=0 | RQ0: [] RQ1: [] | WQ: [] | ev: PREEMPT P0
+[0003] IDLE | RQ0: [] RQ1: [] | WQ: [P0(io:1)] | ev: BOOST IOREQ P0(io=1)
+[0004] RUN P0 q_left=0 | RQ0: [] RQ1: [] | WQ: [] | ev: IODONE P0 PREEMPT P0
+WAIT P0 total_wait=0 total_cpu=4 total_io=1
+WAIT P1 total_wait=0 total_cpu=0 total_io=0
+WAIT P2 total_wait=0 total_cpu=0 total_io=0
+WAIT P3 total_wait=0 total_cpu=0 total_io=0
+WAIT P4 total_wait=0 total_cpu=0 total_io=0
+WAIT P5 total_wait=0 total_cpu=0 total_io=0
+WAIT P6 total_wait=0 total_cpu=0 total_io=0
+WAIT P7 total_wait=0 total_cpu=0 total_io=0
+WAIT P8 total_wait=0 total_cpu=0 total_io=0
+WAIT P9 total_wait=0 total_cpu=0 total_io=0
+METRIC avg_wait=0.00 io_resp=0.00 fairness=0.1000 util=0.8000
+TIME expected_ms=5 elapsed_ms=5

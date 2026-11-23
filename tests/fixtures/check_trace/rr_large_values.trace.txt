@@ -1,0 +1,18 @@
+# policy=RR impl=optional quantum=5 tick_ms=1 workload=rr_large_values.workload.txt tasks=10
+# P0=4100 P1=4101 P2=4102 P3=4103 P4=4104 P5=4105 P6=4106 P7=4107 P8=4108 P9=4109
+[0000] RUN P0 q_left=4 | RQ: [P1] | WQ: [] | ev: -
+[0001] RUN P1 q_left=4 | RQ: [] | WQ: [P0(io:2147483648)] | ev: IOREQ P0(io=2147483648)
+[0002] RUN P1 q_left=3 | RQ: [] | WQ: [P0(io:2147483647)] | ev: -
+[0003] RUN P1 q_left=2 | RQ: [] | WQ: [P0(io:2147483646)] | ev: -
+WAIT P0 total_wait=0 total_cpu=1 total_io=3
+WAIT P1 total_wait=1 total_cpu=3 total_io=0
+WAIT P2 total_wait=0 total_cpu=0 total_io=0
+WAIT P3 total_wait=0 total_cpu=0 total_io=0
+WAIT P4 total_wait=0 total_cpu=0 total_io=0
+WAIT P5 total_wait=0 total_cpu=0 total_io=0
+WAIT P6 total_wait=0 total_cpu=0 total_io=0
+WAIT P7 total_wait=0 total_cpu=0 total_io=0
+WAIT P8 total_wait=0 total_cpu=0 total_io=0
+WAIT P9 total_wait=0 total_cpu=0 total_io=0
+METRIC avg_wait=0.10 io_resp=0.00 fairness=0.1600 util=1.0000
+TIME expected_ms=4 elapsed_ms=4

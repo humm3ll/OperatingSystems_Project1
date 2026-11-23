@@ -1,0 +1,18 @@
+# policy=RR impl=basic quantum=2 tick_ms=1 workload=rr_basic.workload.txt tasks=10
+# P0=4100 P1=4101 P2=4102 P3=4103 P4=4104 P5=4105 P6=4106 P7=4107 P8=4108 P9=4109
+[0000] RUN P0 q_left=1 | RQ: [] | WQ: [] | ev: -
+[0001] RUN P0 q_left=0 | RQ: [] | WQ: [] | ev: BURST P0 PREEMPT P0
+[0002] RUN P0 q_left=1 | RQ: [P1] | WQ: [] | ev: BURST P0 ARRIVE P1
+[0003] RUN P0 q_left=0 | RQ: [P1] | WQ: [] | ev: BURST P0 PREEMPT P0
+WAIT P0 total_wait=0 total_cpu=4 total_io=0
+WAIT P1 total_wait=2 total_cpu=0 total_io=0
+WAIT P2 total_wait=0 total_cpu=0 total_io=0
+WAIT P3 total_wait=0 total_cpu=0 total_io=0
+WAIT P4 total_wait=0 total_cpu=0 total_io=0
+WAIT P5 total_wait=0 total_cpu=0 total_io=0
+WAIT P6 total_wait=0 total_cpu=0 total_io=0
+WAIT P7 total_wait=0 total_cpu=0 total_io=0
+WAIT P8 total_wait=0 total_cpu=0 total_io=0
+WAIT P9 total_wait=0 total_cpu=0 total_io=0
+METRIC avg_wait=0.20 io_resp=0.00 fairness=0.1000 util=1.0000
+TIME expected_ms=4 elapsed_ms=4

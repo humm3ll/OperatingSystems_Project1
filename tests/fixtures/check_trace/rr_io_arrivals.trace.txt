@@ -1,0 +1,21 @@
+# policy=RR impl=optional quantum=3 tick_ms=1 workload=rr_io_arrivals.workload.txt tasks=10
+# P0=4100 P1=4101 P2=4102 P3=4103 P4=4104 P5=4105 P6=4106 P7=4107 P8=4108 P9=4109
+[0000] RUN P0 q_left=2 | RQ: [P1] | WQ: [] | ev: -
+[0001] RUN P1 q_left=2 | RQ: [] | WQ: [P0(io:1)] | ev: IOREQ P0(io=1)
+[0002] RUN P1 q_left=1 | RQ: [P0 P2 P3] | WQ: [] | ev: IODONE P0 ARRIVE P2 ARRIVE P3
+[0003] RUN P1 q_left=0 | RQ: [P0 P2 P3] | WQ: [] | ev: PREEMPT P1
+[0004] RUN P0 q_left=2 | RQ: [P2 P3 P1] | WQ: [] | ev: -
+[0005] RUN P2 q_left=2 | RQ: [P3 P1] | WQ: [P0(io:1)] | ev: IOREQ P0(io=1)
+[0006] RUN P2 q_left=1 | RQ: [P3 P1 P0] | WQ: [] | ev: IODONE P0
+WAIT P0 total_wait=3 total_cpu=2 total_io=2
+WAIT P1 total_wait=4 total_cpu=3 total_io=0
+WAIT P2 total_wait=3 total_cpu=2 total_io=0
+WAIT P3 total_wait=5 total_cpu=0 total_io=0
+WAIT P4 total_wait=0 total_cpu=0 total_io=0
+WAIT P5 total_wait=0 total_cpu=0 total_io=0
+WAIT P6 total_wait=0 total_cpu=0 total_io=0
+WAIT P7 total_wait=0 total_cpu=0 total_io=0
+WAIT P8 total_wait=0 total_cpu=0 total_io=0
+WAIT P9 total_wait=0 total_cpu=0 total_io=0
+METRIC avg_wait=1.50 io_resp=2.00 fairness=0.2882 util=1.0000
+TIME expected_ms=7 elapsed_ms=7
